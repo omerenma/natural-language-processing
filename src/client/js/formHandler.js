@@ -8,7 +8,6 @@ export const handleSubmit = (event) => {
   if (Client.checkForName(formText)) {
     fetch('http://localhost:5000/apidata', {
       method: 'POST',
-      credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json',
       },
