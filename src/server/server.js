@@ -6,15 +6,12 @@ const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 dotenv.config();
-const NLPData = [
-  {
-    name: 'Kingsley',
-  },
-];
-const port = process.env.PORT || 3000;
+
+const port = process.env.PORT || 5000;
 
 const API_KEY = process.env.API_KEY;
 const API_URI = process.env.API_URI;
+const PARAMS = process.env.PARAMS;
 
 app.use(cors());
 // Body Parser
@@ -29,7 +26,7 @@ app.get('/', (req, res) => {
 
 // Get api data
 app.get('/nlp', (req, res) => {
-  res.send(NLPData);
+  // res.send(NLPData);
 });
 
 app.post('/apidata', async (req, res) => {
@@ -39,7 +36,6 @@ app.post('/apidata', async (req, res) => {
   );
   try {
     const data = await response.json();
-    console.log(data);
     res.send(data);
   } catch (error) {
     console.log('error', error);
